@@ -1,0 +1,84 @@
+{
+  "Service": {
+    "Subpath": "/self-assessment",
+    "Build_Command": "npm run build:prod:ci",
+    "Lint_Command": "npm run pipeline:check"
+  },
+  "Development": {
+    "Environment": {
+      "Type": "static-ec2",
+      "Routing": "external",
+      "Suffix": "/dev/"
+    },
+    "Infrastructure": {
+      "EC2_Type": "c5a.large"
+    },
+    "Build": {
+      "SDK_Path": "sdk-configs/Development.json",
+      "sdkContentServerUrl": "https://account-np.hmrc.gov.uk/self-assessment/dev/",
+      "Version": "1.13.14"
+    }
+  },
+  "Staging": {
+    "Environment": {
+      "Type": "static-ec2",
+      "Routing": "external",
+      "Suffix": "/test/"
+    },
+    "Infrastructure": {
+      "EC2_Type": "c5a.large"
+    },
+    "Build": {
+      "SDK_Path": "sdk-configs/Staging.json",
+      "sdkContentServerUrl": "https://account-np.hmrc.gov.uk/self-assessment/test/",
+      "Version": "1.13.14"
+    }
+  },
+  "Stg1-mirror": {
+    "Environment": {
+      "Type": "static-ec2",
+      "Routing": "external",
+      "Suffix": "/stg1-mirror/"
+    },
+    "Infrastructure": {
+      "EC2_Type": "c5a.large"
+    },
+    "Build": {
+      "SDK_Path": "sdk-configs/Stg1-mirror.json",
+      "sdkContentServerUrl": "https://account-np.hmrc.gov.uk/self-assessment/stg1-mirror/",
+      "Version": "1.13.14"
+    }
+  },
+  "Preproduction": {
+    "Environment": {
+      "Type": "static-ec2",
+      "Routing": "external",
+      "Suffix": "/preprod/"
+    },
+    "Infrastructure": {
+      "EC2_Type": "c5a.large"
+    },
+    "Build": {
+      "SDK_Path": "sdk-configs/Preproduction.json",
+      "sdkContentServerUrl": "https://account.hmrc.gov.uk/self-assessment/preprod/",
+      "Version": "1.7.0"
+    }
+  },
+  "Production": {
+    "Environment": {
+      "Type": "hpha-ec2",
+      "Routing": "external",
+      "Suffix": "/"
+    },
+    "Infrastructure": {
+      "EC2_Type": "c5a.large",
+      "EC2_Minimum_Hosts": "1",
+      "EC2_Maximum_Hosts": "4"
+    },
+    "Build": {
+      "SDK_Path": "sdk-configs/Production.json",
+      "sdkContentServerUrl": "https://account.hmrc.gov.uk/self-assessment/",
+      "Version": "1.7.0"
+    }
+  }
+}
